@@ -1,30 +1,26 @@
-import type { Metadata } from "next";
-import {  Poppins } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next'
+import { Poppins } from 'next/font/google'
+import './globals.css'
+import { SiAmazongames } from 'react-icons/si'
 
 const poppins = Poppins({
-  variable: "--font-poppins",
-weight: ["400"]
-});
-
+  variable: '--font-poppins',
+  weight: ['400'],
+})
 
 export const metadata: Metadata = {
-  title: "Game club",
-  description: "Game club - crm dashbord system ",
-};
+  title: 'Game club',
+  description: 'Game club - crm dashbord system ',
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${poppins.variable}  antialiased`}
-      >
-        {children}
-      </body>
+      <body className={`${poppins.variable}  antialiased`}>{children}</body>
     </html>
-  );
+  )
 }
