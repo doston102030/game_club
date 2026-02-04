@@ -1,7 +1,8 @@
+import { User } from 'lucide-react'
 import { redirect } from 'next/navigation'
 
 function App() {
-  const user = false
+  const user = true
 
   if (user) {
     redirect('/dashboard')
