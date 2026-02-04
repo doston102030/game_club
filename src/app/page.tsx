@@ -1,9 +1,14 @@
-
+import { redirect } from 'next/navigation'
 
 function App() {
-  return (
-    <div>App</div>
-  )
+  const user = false
+
+  if (user) {
+    redirect('/dashboard')
+  }
+  redirect('/auth/login')
+
+  return <div>App</div>
 }
 
 export default App
