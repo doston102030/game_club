@@ -4,7 +4,9 @@ type  Props = {
 
 function InputError({massage}: Props) {
   return (
-    <div className='text-red-600  text-sm'>{massage}</div>
+    <div className="relative" >
+    <p className='text-red-600 absolute  text-sm'>{massage}</p>
+    </div>
   )
 }
 
