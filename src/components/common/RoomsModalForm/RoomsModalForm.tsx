@@ -11,6 +11,7 @@ import { Plus } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { Dispatch, SetStateAction } from 'react'
+import { useSetRooms } from '@/hooks/useSetRooms'
 
 const roomSchema = z.object({
     name: z.string().min(2,"Xona nomi kamida ikkita harf bo'lishi kerek!").max(20, "Xona nomi 20 harfdan kam  bo'lsin"),
@@ -18,11 +19,15 @@ const roomSchema = z.object({
 
 })
 
+  export  type TRoom = z.infer<typeof roomSchema>;
+
+
 type Props = {
   setShowModal: Dispatch<SetStateAction <boolean>>
 }
 
 function RoomsModalForm( {setShowModal}:Props) {
+  const {setRoom} = useSetRooms()
     const {
     register,
     reset,
@@ -32,10 +37,10 @@ function RoomsModalForm( {setShowModal}:Props) {
     resolver: zodResolver(roomSchema),
   })
   
-type TRoom = z.infer<typeof roomSchema>
+
 
   const onsunbit = (room: TRoom) => {
-    console.log(room)
+    setRoom(room)
     
     reset()
     setShowModal(false)

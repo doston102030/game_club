@@ -7,6 +7,8 @@ function Rooms() {
       <div className="  w-full  flex items-center">
         <RoomsModal />
       </div>
+
+      <ul>xonalar</ul>
     </div>
   )
 }
