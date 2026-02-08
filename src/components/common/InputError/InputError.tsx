@@ -1,11 +1,11 @@
-type  Props = {
-    massage: string | undefined
+type Props = {
+  massage: string | undefined
 }
 
-function InputError({massage}: Props) {
+function InputError({ massage }: Props) {
   return (
     <div className="relative" >
-    <p className='text-red-600 absolute  text-sm'>{massage}</p>
+      <p className='text-red-600 absolute  text-sm'>{massage}</p>
     </div>
   )
 }

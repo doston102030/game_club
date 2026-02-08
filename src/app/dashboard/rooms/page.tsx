@@ -1,14 +1,18 @@
+
+
+import RoomsList from '@/components/common/RoomsList/RoomsList'
 import { RoomsModal } from '@/components/common/RoomsModal/RoomsModal'
-import React from 'react'
+
 
 function Rooms() {
+
   return (
-    <div className="h-full">
+    <div className="h-full flex flex-col gap-10">
       <div className="  w-full  flex items-center">
         <RoomsModal />
       </div>
 
-      <ul>xonalar</ul>
+      <RoomsList/>
     </div>
   )
 }

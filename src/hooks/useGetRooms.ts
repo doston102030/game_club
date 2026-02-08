@@ -9,20 +9,20 @@ import { useEffect, useState } from "react"
 
 
 
-export const useGetRoom = ()=>{
-    const [rooms , setRooms]= useState<FullRoomType[]>([])
-    const [loading, setLoading]= useState(false)
+export const useGetRoom = () => {
+    const [rooms, setRooms] = useState<FullRoomType[]>([])
+    const [loading, setLoading] = useState(true)
 
 
 
-    useEffect(()=> {
-        const fullData =  getRoom((data)=>{
+    useEffect(() => {
+        const fullData = getRoom((data) => {
             setRooms(data)
             setLoading(false)
         })
 
-     return  ()=> fullData()
-    },[])
+        return () => fullData()
+    }, [])
 
-    return {rooms , loading};
+    return { rooms, loading };
 }

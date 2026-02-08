@@ -14,21 +14,21 @@ import { Dispatch, SetStateAction } from 'react'
 import { useSetRooms } from '@/hooks/useSetRooms'
 
 const roomSchema = z.object({
-    name: z.string().min(2,"Xona nomi kamida ikkita harf bo'lishi kerek!").max(20, "Xona nomi 20 harfdan kam  bo'lsin"),
-    price: z.number().min(5000, "Kamida 5000 so'm bo'lishi kerek").max(100000, "Narxni xato kiritdingiz!")
+  name: z.string().min(2, "Xona nomi kamida ikkita harf bo'lishi kerek!").max(20, "Xona nomi 20 harfdan kam  bo'lsin"),
+  price: z.number().min(5000, "Kamida 5000 so'm bo'lishi kerek").max(100000, "Narxni xato kiritdingiz!")
 
 })
 
-  export  type TRoom = z.infer<typeof roomSchema>;
+export type TRoom = z.infer<typeof roomSchema>;
 
 
 type Props = {
-  setShowModal: Dispatch<SetStateAction <boolean>>
+  setShowModal: Dispatch<SetStateAction<boolean>>
 }
 
-function RoomsModalForm( {setShowModal}:Props) {
-  const {setRoom} = useSetRooms()
-    const {
+function RoomsModalForm({ setShowModal }: Props) {
+  const { setRoom } = useSetRooms()
+  const {
     register,
     reset,
     handleSubmit,
@@ -36,53 +36,53 @@ function RoomsModalForm( {setShowModal}:Props) {
   } = useForm<TRoom>({
     resolver: zodResolver(roomSchema),
   })
-  
+
 
 
   const onsunbit = (room: TRoom) => {
     setRoom(room)
-    
+
     reset()
     setShowModal(false)
   }
 
   return (
-   <DialogContent className="sm:max-w-sm">
-        <form onSubmit={handleSubmit(onsunbit)} className="flex flex-col gap-4">
-          <DialogHeader>
-            <DialogTitle>Yangi xona yaratish</DialogTitle>
-            <DialogDescription>
-              Ma'lumotlarni e'tibor bilan kriting!
-            </DialogDescription>
-          </DialogHeader>
-          <FieldGroup>
-            <Field className="gap-1">
-              <Label htmlFor="name-1">Xonaning nomi</Label>
-              <Input
-                id="name-1"
-                placeholder="Masalan: 1-xona"
-                {...register('name')}
-              />
-              {errors.name && <InputError massage = {errors.name.message} /> }
-            </Field>
-            <Field className="gap-1">
-              <Label htmlFor="price-1">Xonaning narxi</Label>
-              <Input
-                type="number"
-                id="price-1"
-                placeholder="Masalan: 10000"
-                {...register('price', { valueAsNumber: true })}
-              />
-            </Field>
-          </FieldGroup>
-          <DialogFooter>
-            <DialogClose asChild>
-              <Button variant="outline">Bekor qilish</Button>
-            </DialogClose>
-            <Button type="submit">Qo'shish</Button>
-          </DialogFooter>
-        </form>
-      </DialogContent>
+    <DialogContent className="sm:max-w-sm">
+      <form onSubmit={handleSubmit(onsunbit)} className="flex flex-col gap-4">
+        <DialogHeader>
+          <DialogTitle>Yangi xona yaratish</DialogTitle>
+          <DialogDescription>
+            Ma&apos;lumotlarni e&apos;tibor bilan kriting!
+          </DialogDescription>
+        </DialogHeader>
+        <FieldGroup>
+          <Field className="gap-1">
+            <Label htmlFor="name-1">Xonaning nomi</Label>
+            <Input
+              id="name-1"
+              placeholder="Masalan: 1-xona"
+              {...register('name')}
+            />
+            {errors.name && <InputError massage={errors.name.message} />}
+          </Field>
+          <Field className="gap-1">
+            <Label htmlFor="price-1">Xonaning narxi</Label>
+            <Input
+              type="number"
+              id="price-1"
+              placeholder="Masalan: 10000"
+              {...register('price', { valueAsNumber: true })}
+            />
+          </Field>
+        </FieldGroup>
+        <DialogFooter>
+          <DialogClose asChild>
+            <Button variant="outline">Bekor qilish</Button>
+          </DialogClose>
+          <Button type="submit">Qo&apos;shish</Button>
+        </DialogFooter>
+      </form>
+    </DialogContent>
   )
 }
 

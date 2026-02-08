@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { log } from 'console'
+
 import {
   ChartNoAxesCombined,
   DoorOpen,
@@ -38,13 +38,13 @@ function Menu() {
       <nav>
         <ul className=" flex flex-col gap-2">
           {menu.map(menuItem => {
-            let Icon = menuItem.icon
+            const Icon = menuItem.icon
             return (
               <li key={menuItem.href}>
                 <Link href={menuItem.href}>
                   <Button
                     className=" w-full justify-start"
-                    variant={pathname == menuItem.href ? "default" :'outline'}
+                    variant={pathname == menuItem.href ? "default" : 'outline'}
                   >
                     <Icon />
                     <span>{menuItem.text}</span>
