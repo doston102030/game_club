@@ -1,18 +1,20 @@
-"use client"
+'use client'
 import { Spinner } from '@/components/ui/spinner'
 import { useGetRoom } from '@/hooks/useGetRooms'
 
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table'
+import { Badge } from '@/components/ui/badge'
+import { Settings } from 'lucide-react'
 
 function RoomsList() {
   const { rooms, loading } = useGetRoom()
-
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center h-40">
-        <Spinner />
-      </div>
-    )
-  }
 
   if (!rooms.length) {
     return (
@@ -22,20 +24,45 @@ function RoomsList() {
     )
   }
 
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-40">
+        <Spinner />
+      </div>
+    )
+  }
 
   return (
-    <div className="flex flex-col gap-4">
-      {rooms.map((room) => (
-        <div key={room.name} className="p-4 border rounded shadow-sm flex justify-between items-center">
-          <div>
-            <h3 className="font-bold">{room.name}</h3>
-            <p className="text-sm text-gray-500">{room.price} UZS</p>
-          </div>
-          <span className={`px-2 py-1 rounded text-xs ${room.isBusy ? 'bg-red-100 text-red-600' : 'bg-green-100 text-green-600'}`}>
-            {room.isBusy ? 'Band' : 'Bo\'sh'}
-          </span>
-        </div>
-      ))}
+    <div>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead className="">Nomi</TableHead>
+            <TableHead>Statusi</TableHead>
+
+            <TableHead>Narxi</TableHead>
+            <TableHead className="text-right">Sozlama</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {rooms.map(room => (
+            <TableRow key={room.name}>
+              <TableCell className="font-medium ">{room.name}</TableCell>
+              <TableCell>
+                {room.isBusy ? (
+                  <Badge variant={'error'}>Band</Badge>
+                ) : (
+                  <Badge variant={'success'}>Bo'sh</Badge>
+                )}
+              </TableCell>
+              <TableCell>{room.price}so'm</TableCell>
+              <TableCell className="flex justify-end cursor-pointer">
+                <Settings />
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
     </div>
   )
 }
