@@ -1,5 +1,6 @@
 
 
+import { RoomsCommand } from '@/components/common/RoomsCommond/RoomsCommand'
 import RoomsList from '@/components/common/RoomsList/RoomsList'
 import { RoomsModal } from '@/components/common/RoomsModal/RoomsModal'
 
@@ -13,6 +14,7 @@ function Rooms() {
       </div>
 
       <RoomsList/>
+      <RoomsCommand/>
     </div>
   )
 }
