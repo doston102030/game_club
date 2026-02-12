@@ -13,8 +13,8 @@ export function RoomsModal() {
   return (
     <Dialog open={showModal} onOpenChange={setShowModal}>
       <DialogTrigger className="ml-auto" asChild>
-        <Button>
-          <Plus />
+        <Button className="gap-2 shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30 transition-all duration-200">
+          <Plus size={18} strokeWidth={2.5} />
           <span>Xona qo&apos;shish</span>
         </Button>
       </DialogTrigger>

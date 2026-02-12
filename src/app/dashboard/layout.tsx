@@ -9,7 +9,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
       <Sidebar />
       <div className="grow flex flex-col bg-background">
         <Navbar />
-        <main className=" grow px-4 py-4   overflow-y-auto">
+        <main className="grow px-6 py-6 overflow-y-auto bg-muted/20">
           {children}
         </main>
       </div>

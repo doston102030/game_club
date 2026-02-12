@@ -3,9 +3,11 @@ import { ThemeControll } from '@/components/common/ThameController/ThameControll
 
 function Navbar() {
   return (
-    <header className="border-b shadow-sm px-8 py-8 flex items-center justify-between ">
+    <header className="border-b border-border/40 bg-background/80 backdrop-blur-xl px-8 py-4 flex items-center justify-between sticky top-0 z-10">
       <NavbarTitle />
-      <ThemeControll />
+      <div className="flex items-center gap-3">
+        <ThemeControll />
+      </div>
     </header>
   )
 }

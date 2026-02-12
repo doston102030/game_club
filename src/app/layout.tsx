@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import './globals.css'
 import { SiAmazongames } from 'react-icons/si'
+import { Toaster } from 'sonner'
 import { ThemeProvider } from '@/components/common/ThemeProvider/ThemeProvider'
 
 const poppins = Poppins({
@@ -22,7 +23,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${poppins.variable}  antialiased  w-full  h-screen  `}>
-        <ThemeProvider attribute={"class"} defaultTheme='light' disableTransitionOnChange>{children}</ThemeProvider>
+        <ThemeProvider attribute={"class"} defaultTheme='light' disableTransitionOnChange>
+          <Toaster position="top-right" richColors closeButton />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )
