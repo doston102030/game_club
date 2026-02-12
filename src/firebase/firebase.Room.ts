@@ -1,4 +1,4 @@
-import { collection, addDoc, query, onSnapshot } from "firebase/firestore";
+import { collection, addDoc, query, onSnapshot,deleteDoc, doc } from "firebase/firestore";
 import { db } from "./firbase.config";
 import { TRoom } from "@/components/common/RoomsModalForm/RoomsModalForm";
 import { FullRoomType } from "@/types/types";
@@ -34,4 +34,8 @@ export const getRoom = function (fn: (room: FullRoomType[]) => void) {
 
         fn(rooms)
     })
+}
+
+export const deleteRoom = async function(roomId:string){
+    return  deleteDoc(doc(db,"rooms",roomId))
 }

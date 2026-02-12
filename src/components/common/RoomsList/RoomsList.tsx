@@ -11,13 +11,14 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { Badge } from '@/components/ui/badge'
-import { Settings } from 'lucide-react'
 import { useState } from 'react'
 import { RoomsCommand } from '../RoomsCommond/RoomsCommand'
 
 function RoomsList() {
-  const [showModal , setShowModal]= useState(false)
+  const [showModal, setShowModal] = useState(false)
   const { rooms, loading } = useGetRoom()
+  const [roomId, setRoomId] = useState("")
+
 
   if (!rooms.length) {
     return (
@@ -30,14 +31,20 @@ function RoomsList() {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-40">
-        <Spinner/>
+        <Spinner />
       </div>
     )
   }
+  const handeleClick = (roomId: string) => {
+    setShowModal(true);
+    setRoomId(roomId);
+  };
+
 
   return (
     <div>
-      <RoomsCommand open={showModal} setOpen={setShowModal}/>
+      <RoomsCommand roomId={roomId} open={showModal} setOpen={setShowModal} />
+
       <Table>
         <TableHeader>
           <TableRow>
@@ -45,12 +52,13 @@ function RoomsList() {
             <TableHead>Statusi</TableHead>
 
             <TableHead className='text-end'>Narxi</TableHead>
-           
+
           </TableRow>
         </TableHeader>
         <TableBody>
           {rooms.map(room => (
-            <TableRow  onClick={()=>setShowModal(true)}   key={room.name} className='select-none cursor-pointer'>
+
+            <TableRow onClick={() => handeleClick(room.id)} key={room.id} className='select-none cursor-pointer'>
               <TableCell className="font-medium ">{room.name}</TableCell>
               <TableCell>
                 {room.isBusy ? (
@@ -59,7 +67,7 @@ function RoomsList() {
                   <Badge variant={'success'}>Bo'sh</Badge>
                 )}
               </TableCell>
-              <TableCell  className='text-end'>{room.price}so'm</TableCell>
+              <TableCell className='text-end'>{room.price}so'm</TableCell>
             </TableRow>
           ))}
         </TableBody>
