@@ -44,13 +44,13 @@ function RoomsList() {
             <TableHead className="">Nomi</TableHead>
             <TableHead>Statusi</TableHead>
 
-            <TableHead>Narxi</TableHead>
-            <TableHead className="text-right">Sozlama</TableHead>
+            <TableHead className='text-end'>Narxi</TableHead>
+           
           </TableRow>
         </TableHeader>
         <TableBody>
           {rooms.map(room => (
-            <TableRow  onClick={()=>setShowModal(true)}   key={room.name} className='select-none'>
+            <TableRow  onClick={()=>setShowModal(true)}   key={room.name} className='select-none cursor-pointer'>
               <TableCell className="font-medium ">{room.name}</TableCell>
               <TableCell>
                 {room.isBusy ? (
@@ -59,10 +59,7 @@ function RoomsList() {
                   <Badge variant={'success'}>Bo'sh</Badge>
                 )}
               </TableCell>
-              <TableCell>{room.price}so'm</TableCell>
-              <TableCell className="flex justify-end cursor-pointer">
-                <Settings/>
-              </TableCell>
+              <TableCell  className='text-end'>{room.price}so'm</TableCell>
             </TableRow>
           ))}
         </TableBody>

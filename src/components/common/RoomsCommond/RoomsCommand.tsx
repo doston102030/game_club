@@ -41,13 +41,13 @@ export function RoomsCommand({ open, setOpen }: Props) {
             </CommandItem>
           </CommandGroup>
           <CommandSeparator />
-          <CommandGroup heading="Sozlamalar">
+          <CommandGroup heading="Sozlamalar" >
             <CommandItem>
               <Edit />
               <span>Xonani tahrirlash</span>
             </CommandItem>
-            <CommandItem>
-              <Trash2 />
+            <CommandItem className='text-red-800  bg-red-200  hover:bg-red-300! hover:text-red-800!'>
+              <Trash2 className='text-red-800' />
               <span>Xonani o'chirish</span>
             </CommandItem>
             <CommandItem></CommandItem>
