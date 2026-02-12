@@ -12,8 +12,11 @@ import {
 } from '@/components/ui/table'
 import { Badge } from '@/components/ui/badge'
 import { Settings } from 'lucide-react'
+import { useState } from 'react'
+import { RoomsCommand } from '../RoomsCommond/RoomsCommand'
 
 function RoomsList() {
+  const [showModal , setShowModal]= useState(false)
   const { rooms, loading } = useGetRoom()
 
   if (!rooms.length) {
@@ -27,13 +30,14 @@ function RoomsList() {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-40">
-        <Spinner />
+        <Spinner/>
       </div>
     )
   }
 
   return (
     <div>
+      <RoomsCommand open={showModal} setOpen={setShowModal}/>
       <Table>
         <TableHeader>
           <TableRow>
@@ -46,7 +50,7 @@ function RoomsList() {
         </TableHeader>
         <TableBody>
           {rooms.map(room => (
-            <TableRow key={room.name}>
+            <TableRow  onClick={()=>setShowModal(true)}   key={room.name} className='select-none'>
               <TableCell className="font-medium ">{room.name}</TableCell>
               <TableCell>
                 {room.isBusy ? (
@@ -57,7 +61,7 @@ function RoomsList() {
               </TableCell>
               <TableCell>{room.price}so'm</TableCell>
               <TableCell className="flex justify-end cursor-pointer">
-                <Settings />
+                <Settings/>
               </TableCell>
             </TableRow>
           ))}

@@ -14,7 +14,7 @@ function Rooms() {
       </div>
 
       <RoomsList/>
-      <RoomsCommand/>
+  
     </div>
   )
 }

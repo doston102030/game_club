@@ -19,7 +19,7 @@ export function RoomsModal() {
         </Button>
       </DialogTrigger>
 
-      {setShowModal && <RoomsModalform setShowModal={setShowModal} />}
+      <RoomsModalform setShowModal={setShowModal} />
     </Dialog>
   )
 }
